@@ -1,0 +1,189 @@
+/*=============General =====*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    scroll-behavior: smooth;
+}
+body{
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #222;
+}
+/*=============Navigation =====*/
+header{
+    background-color: #071f1a;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.navbar{
+    width: 90;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+.logo{
+    color: #d4af37;
+    font-size: 25px;
+}
+.nav-links{
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+.nav-links a{
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+.nav-links a:hover{
+    color: #d4af37;
+}
+/*=============Home =====*/
+.hero{
+    height: 90vh;
+    background: linear-gradient(rgba(0,0,0,0.65) , rgba(0,0,0,0.65));
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ text-align: center;
+}  
+.hero-content{
+    color: white;
+    max-width: 700px;
+    padding: 20px;
+}
+.welcome{
+    color: #d4af37;
+    letter-spacing: 4px;
+    font-weight: bold;
+}
+.hero h1{
+    font-size: 60px;
+    margin: 15px 0;
+}
+.hero p{
+    font-size: 20px;
+    line-height: 1.6;
+}
+/*=============Button =====*/
+.btn{
+    display: inline-block;
+    margin-top: 30px;
+    padding: 14px 30px;
+    background-color: #d4af37;
+    color: #071f1a;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+.btn:hover{
+    background-color: white;
+}
+/*=============Section =====*/
+.section{
+    padding: 80px 10%;
+    text-align: center;
+}
+.section h2{
+    font-size: 35px;
+    color: #071f1a;
+    margin-bottom: 15px;
+}
+.section-text{
+    margin-bottom: 35px;
+    color: #666;
+}
+/*=============Kuran Card =====*/
+.quran-card{
+    background-color: white;
+    max-width: 700px;
+    margin: 25px auto;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    border-left: 5px solid #d4af37;
+     border-right: 5px solid #e98eac;
+}
+.quran-card h3{
+    color: #071f1a;
+    margin-bottom: 25px;
+}
+.arabic{
+    font-size: 32px;
+    direction: rtl;
+    color: #071f1a;
+    margin-bottom: 20px;
+    line-height: 2;
+}
+.transilation{
+    color: #555;
+    font-size: 17px;
+    line-height: 1.6;
+}
+/*=============About =====*/
+.about{
+    background-color: #e9f0ed;
+
+}
+.about p{
+    max-width: 700px;
+    margin: 20px auto;
+    line-height: 1.8;
+    color: #555;
+}
+.about h3{
+    color: #d4af37;
+    font-size: 25px;
+    margin-top: 30px;
+}
+/*=============Contact =====*/
+.contact-box{
+    background-color: white;
+    max-width: 500px;
+    margin: 30px auto;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+.contact-box p{
+    margin: 15px 0;
+}
+/*=============Footer =====*/
+footer{
+    background-color: #071f1a;
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+footer h3{
+    color: #d4af37;
+    margin-bottom: 10px;
+}
+/*=============Mobile =====*/
+@media (max-width:700px){
+    .navbar{
+        flex-direction: column;
+        gap: 15px;
+    }
+    .nav-links{
+          gap: 15px;
+    }
+    .hero h1{
+        font-size: 40px;
+    }
+    .hero p{
+        font-size: 16px;
+    }
+    .section{
+        padding: 60px 5%;
+    }
+    .arabic{
+        font-size: 25px;
+    }
+}
