@@ -20,7 +20,7 @@ header{
     z-index: 1000;
 }
 .navbar{
-    width: 90;
+    width: 90%;
     margin: auto;
     display: flex;
     justify-content: space-between;
@@ -45,14 +45,23 @@ header{
     color: #d4af37;
 }
 /*=============Home =====*/
-.hero{
+.hero {
     height: 90vh;
-    background: linear-gradient(rgba(0,0,0,0.65) , rgba(0,0,0,0.65));
- display: flex;
- justify-content: center;
- align-items: center;
- text-align: center;
-}  
+
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.65),
+                        rgba(0, 0, 0, 0.65)),
+        url("quran-bg.jpg");
+
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
 .hero-content{
     color: white;
     max-width: 700px;
@@ -121,7 +130,7 @@ header{
     margin-bottom: 20px;
     line-height: 2;
 }
-.transilation{
+.translation{
     color: #555;
     font-size: 17px;
     line-height: 1.6;
@@ -186,4 +195,232 @@ footer h3{
     .arabic{
         font-size: 25px;
     }
+}
+/*=============Dark node =====*/
+.dark-mode{
+    background-color: #121212;
+    color: white;
+}
+.dark-mode .section h2{
+    color: #d4af37;
+}
+.dark-mode .section-text{
+    color: #ccc;
+}
+.dark-mode .quran-card{
+    background-color: #1e1e1e;
+    color: white;
+}
+.dark-mode .quran-card h3{
+    color: #d4af37;
+}
+.dark-mode .transilation{
+    color: #ddd;
+}
+.dark-mode .contact-box{
+    background-color: #1e1e1e;
+    color: white;
+}
+.dark-mode .about{
+    background-color: #181818;
+}
+.dark-mode .arabic{
+    color: white;
+}
+#darkModeBtn{
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #d4af37;
+    color: #071f1a;
+    font-weight: bold;
+
+}
+#darkModeBtn:hover{
+    background-color: white;
+}
+.quran-card audio{
+    width: 100%;
+        margin: 15px 0;
+    
+}
+#searchInput{
+    width: 100%;
+    max-width: 500px;
+    padding: 15px;
+    margin: 20px auto 30px;
+    display: block;
+    border: 2px solid #d4af37;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+}
+#searchInput:focus{
+    border-color: #071f1a;
+}
+
+.search-box{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px auto 30px;
+    max-width: 400px;
+}
+.search-box input{
+  
+    flex: 1;
+    padding: 15px;
+    border: 2px solid #d4af37;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;}
+.search-box button{
+        cursor: pointer;
+        font-weight: bold;
+        color: #071f1a;
+        background-color: #d4af37;
+        border-radius: 8px;
+        border: none;
+        padding: 15px 20px;
+  width: 90px;
+  height: 40px;
+  margin-top: 25px;
+    }
+    .search-box button:hover{
+        background-color: #071f1a;
+        color: white;
+    }
+    .translation {
+    font-size: 18px;
+    line-height: 1.8;
+    margin-top: 20px;
+    color: #555;
+}
+
+.dark-mode .translation {
+    color: #ddd;
+}
+/* ===== QURAN GRID ===== */
+
+#quran {
+    max-width: 1200px;
+    margin: auto;
+}
+
+
+
+@media (max-width: 700px) {
+    #quran .quran-card {
+        display: block;
+        width: 100%;
+        margin: 20px 0;
+    }
+}
+/* ===== QURAN HEADER ===== */
+
+.quran-header {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.quran-header h2 {
+    color: #071f1a;
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.quran-header p {
+    color: #666;
+    font-size: 16px;
+}
+
+.dark-mode .quran-header h2 {
+    color: #d4af37;
+}
+
+.dark-mode .quran-header p {
+    color: #ccc;
+}
+/* ===== SURAH INFORMATION ===== */
+
+.surah-info {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.surah-info span {
+    background-color: #f3f0df;
+    color: #071f1a;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.dark-mode .surah-info span {
+    background-color: #2a2a2a;
+    color: #d4af37;
+}
+/* ===== LISTEN TITLE ===== */
+
+.listen-title {
+    text-align: center;
+    color: #071f1a;
+    margin: 25px 0;
+    font-size: 22px;
+}
+
+.dark-mode .listen-title {
+    color: #d4af37;
+}
+/* ===== RESET BUTTON ===== */
+
+#resetBtn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    background-color: #071f1a;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#resetBtn:hover {
+    background-color: #d4af37;
+    color: #071f1a;
+}
+/* ===== QURAN CARD ANIMATION ===== */
+
+.quran-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.quran-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+/* ===== AUDIO PLAYER ===== */
+
+.quran-card audio {
+    width: 100%;
+    margin: 10px 0 20px;
+}
+/* ===== DARK MODE SEARCH ===== */
+
+.dark-mode .search-box input {
+    background-color: #1e1e1e;
+    color: white;
+}
+
+.dark-mode .search-box input::placeholder {
+    color: #aaa;
+}
+
+.dark-mode #searchBtn {
+    background-color: #d4af37;
+    color: #071f1a;
 }
