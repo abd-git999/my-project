@@ -45,40 +45,72 @@ header{
     color: #d4af37;
 }
 /*=============Home =====*/
+/* ===== HERO SECTION ===== */
+
 .hero {
-    height: 90vh;
+    min-height: 90vh;
 
-    background:
-        linear-gradient(rgba(0, 0, 0, 0.65),
-                        rgba(0, 0, 0, 0.65)),
-        url("quran-bg.jpg");
-
-    background-size: cover;
-    background-position: center;
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.65),
+        rgba(0, 0, 0, 0.65)
+    );
 
     display: flex;
     justify-content: center;
     align-items: center;
+
     text-align: center;
 }
 
-.hero-content{
+.hero-content {
     color: white;
     max-width: 700px;
     padding: 20px;
 }
-.welcome{
+
+.welcome {
     color: #d4af37;
     letter-spacing: 4px;
     font-weight: bold;
+    margin-bottom: 10px;
 }
-.hero h1{
+
+.hero h1 {
     font-size: 60px;
     margin: 15px 0;
+    color: #d4af37;
 }
-.hero p{
+
+.hero p {
     font-size: 20px;
     line-height: 1.6;
+}
+
+.hero-btn {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 14px 30px;
+
+    background-color: #d4af37;
+    color: #071f1a;
+
+    text-decoration: none;
+    border-radius: 8px;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.hero-btn:hover {
+    background-color: white;
+    transform: translateY(-3px);
+}
+
+.creator {
+    color: #d4af37 !important;
+    font-size: 16px !important;
+    margin-top: 20px;
 }
 /*=============Button =====*/
 .btn{
@@ -136,32 +168,111 @@ header{
     line-height: 1.6;
 }
 /*=============About =====*/
-.about{
-    background-color: #e9f0ed;
+/* ===== ABOUT SECTION ===== */
 
+.about {
+    background-color: #e9f0ed;
 }
-.about p{
-    max-width: 700px;
-    margin: 20px auto;
+
+.about-content {
+    max-width: 800px;
+    margin: auto;
+}
+
+.small-title {
+    color: #d4af37;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+}
+
+.about-content h2 {
+    color: #071f1a;
+    font-size: 35px;
+    margin-bottom: 20px;
+}
+
+.about-content p {
     line-height: 1.8;
     color: #555;
+    margin: 15px 0;
 }
-.about h3{
-    color: #d4af37;
+
+.about-content h3 {
+    color: #071f1a;
     font-size: 25px;
     margin-top: 30px;
 }
+
+.creator-role {
+    color: #d4af37 !important;
+    font-weight: bold;
+}
+
+.dark-mode .about {
+    background-color: #181818;
+}
+
+.dark-mode .about-content h2,
+.dark-mode .about-content h3 {
+    color: #d4af37;
+}
+
+.dark-mode .about-content p {
+    color: #ccc;
+}
 /*=============Contact =====*/
-.contact-box{
-    background-color: white;
-    max-width: 500px;
+/* ===== CONTACT ===== */
+
+.contact-box {
+    max-width: 600px;
     margin: 30px auto;
     padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }
-.contact-box p{
-    margin: 15px 0;
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    text-align: left;
+    padding: 20px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.contact-item:last-child {
+    border-bottom: none;
+}
+
+.contact-item > span {
+    font-size: 28px;
+}
+
+.contact-item strong {
+    color: #071f1a;
+}
+
+.contact-item p {
+    margin-top: 5px;
+    color: #666;
+}
+
+.dark-mode .contact-box {
+    background-color: #1e1e1e;
+}
+
+.dark-mode .contact-item {
+    border-color: #444;
+}
+
+.dark-mode .contact-item strong {
+    color: #d4af37;
+}
+
+.dark-mode .contact-item p {
+    color: #ccc;
 }
 /*=============Footer =====*/
 footer{
@@ -195,6 +306,25 @@ footer h3{
     .arabic{
         font-size: 25px;
     }
+    #menuBtn {
+    display: block;
+}
+
+.navbar {
+    position: relative;
+}
+
+.nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    gap: 15px;
+}
+
+.nav-links.active {
+    display: flex;
+}
 }
 /*=============Dark node =====*/
 .dark-mode{
@@ -239,6 +369,7 @@ footer h3{
 }
 #darkModeBtn:hover{
     background-color: white;
+    transform: translate(1px);
 }
 .quran-card audio{
     width: 100%;
@@ -311,10 +442,53 @@ footer h3{
 
 
 @media (max-width: 700px) {
-    #quran .quran-card {
-        display: block;
-        width: 100%;
-        margin: 20px 0;
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+    }
+#menuBtn {
+    display: block;
+}
+.surah-list {
+    grid-template-columns: 1fr;
+}
+.navbar {
+    position: relative;
+}
+
+.nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    gap: 15px;
+}
+
+.nav-links.active {
+    display: flex;
+}
+    .nav-links {
+        gap: 15px;
+    }
+
+    .hero h1 {
+        font-size: 40px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .section {
+        padding: 60px 5%;
+    }
+
+    .arabic {
+        font-size: 25px;
+    }
+    .profile-image{
+        width: 12px;
+        height: 120px;
     }
 }
 /* ===== QURAN HEADER ===== */
@@ -423,4 +597,306 @@ footer h3{
 .dark-mode #searchBtn {
     background-color: #d4af37;
     color: #071f1a;
+}
+/* ===== FOOTER ===== */
+
+footer {
+    background-color: #071f1a;
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+    margin-top: 50px;
+}
+
+footer h3 {
+    color: #d4af37;
+    margin-bottom: 15px;
+}
+
+footer p {
+    margin: 10px 0;
+}
+
+.dark-mode footer {
+    background-color: black;
+}
+/* ===== PROFILE IMAGE ===== */
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border: 4px solid #d4af37;
+
+    margin-bottom: 20px;
+
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+}
+.profile-image {
+    width: 120px;
+    height: 120px;
+}
+/* ===== PROFILE IMAGE EFFECT ===== */
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+
+    border: 4px solid #d4af37;
+
+    box-shadow:
+        0 0 15px rgba(212, 175, 55, 0.5),
+        0 0 35px rgba(212, 175, 55, 0.25);
+
+    transition: transform 0.4s ease;
+}
+
+.profile-image:hover {
+    transform: scale(1.05);
+}
+/* ===== PROFILE NAME ===== */
+
+.profile-name {
+    color: white;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+/* ===== CREATOR BADGE ===== */
+
+.creator-badge {
+    display: inline-block;
+
+    color: #d4af37 !important;
+
+    border: 1px solid #d4af37;
+    border-radius: 20px;
+
+    padding: 6px 14px;
+
+    font-size: 14px !important;
+
+    margin-bottom: 20px;
+}
+/* ===== MOBILE MENU BUTTON ===== */
+
+#menuBtn {
+    display: none;
+
+    background: none;
+    border: none;
+
+    color: #d4af37;
+
+    font-size: 28px;
+
+    cursor: pointer;
+}
+@media (max-width: 700px) {
+
+    .navbar {
+        width: 90%;
+        padding: 15px 0;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    #darkModeBtn {
+        margin-top: 10px;
+    }
+
+    .nav-links {
+        background-color: #071f1a;
+        padding: 15px;
+        border-radius: 8px;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 8px;
+    }
+
+}
+/* ===== SURAH NAVIGATION ===== */
+
+.surah-navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin: 30px auto;
+}
+
+.surah-navigation button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 7px;
+
+    background-color: #071f1a;
+    color: white;
+
+    font-weight: bold;
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.surah-navigation button:hover {
+    background-color: #d4af37;
+    color: #071f1a;
+}
+
+#currentSurah {
+    color: #d4af37;
+    font-weight: bold;
+}
+/* ===== FAVORITE BUTTON ===== */
+
+.favorite-btn {
+    border: 1px solid #d4af37;
+    background-color: transparent;
+    color: #071f1a;
+
+    padding: 8px 14px;
+    border-radius: 20px;
+
+    cursor: pointer;
+    font-weight: bold;
+
+    margin-bottom: 15px;
+
+    transition: 0.3s;
+}
+
+.favorite-btn:hover {
+    background-color: #d4af37;
+}
+
+.dark-mode .favorite-btn {
+    color: #d4af37;
+}
+/* ===== SURAH LIST ===== */
+
+.surah-directory {
+    text-align: center;
+    margin: 40px auto 25px;
+}
+
+.surah-directory h2 {
+    color: #071f1a;
+    margin: 10px 0;
+}
+
+.surah-directory p:not(.small-title) {
+    color: #666;
+}
+
+.surah-list {
+    max-width: 700px;
+    margin: 20px auto 40px;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.surah-list button {
+    padding: 14px;
+
+    border: 1px solid #d4af37;
+    border-radius: 8px;
+
+    background-color: white;
+    color: #071f1a;
+
+    font-weight: bold;
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.surah-list button:hover {
+    background-color: #d4af37;
+}
+
+.dark-mode .surah-directory h2 {
+    color: #d4af37;
+}
+
+.dark-mode .surah-directory p:not(.small-title) {
+    color: #ccc;
+}
+
+.dark-mode .surah-list button {
+    background-color: #1e1e1e;
+    color: #d4af37;
+}
+.verse-number {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 32px;
+    height: 32px;
+
+    border: 2px solid #d4af37;
+    border-radius: 50%;
+
+    color: #071f1a;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.dark-mode .verse-number {
+    color: #d4af37;
+}
+.verse-found {
+    border: 2px solid #d4af37;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+}
+.copy-verse-btn {
+    margin-top: 10px;
+    padding: 7px 12px;
+    border: 1px solid #d4af37;
+    border-radius: 6px;
+    background: transparent;
+    color: #071f1a;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.copy-verse-btn:hover {
+    background-color: #d4af37;
+}
+
+.dark-mode .copy-verse-btn {
+    color: #d4af37;
+}
+.share-verse-btn {
+    margin-top: 10px;
+    margin-left: 5px;
+    padding: 7px 12px;
+    border: 1px solid #d4af37;
+    border-radius: 6px;
+    background: transparent;
+    color: #071f1a;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.share-verse-btn:hover {
+    background-color: #d4af37;
+}
+
+.dark-mode .share-verse-btn {
+    color: #d4af37;
 }

@@ -10,6 +10,7 @@
     <header>
     <nav class="navbar">
     <h2 class="logo">☪ Sound Of Kuran</h2>
+    <button id="menuBtn">☰</button>
     <ul class="nav-links">
         <li><a href="#home">Home</a></li>
         <li><a href="#quran">Quran</a></li>
@@ -20,177 +21,838 @@
     </nav>
     </header>
                <!--======Home=======-->
-                <section id="home" class="hero" >
-           <div class="hero-content">
-           <p class="welcome">Welcome To </p>
-           <h1>Sound Of Kuran</h1>
-           <p>Listen , Read and Understand the holly Kuran</p>
-           <a href="#quran" class="btn">Explore Kuran</a>
+              <section id="home" class="hero">
 
-           </div>
-             
-        </section>
+    <div class="hero-content">
+
+        <img 
+            src="abdisa.jpg" 
+            alt="Abdisa Siraj"
+            class="profile-image"
+        >
+        <h2 class="profile-name">Abdisa Siraj</h2>
+<p class="creator-badge">
+    ☪ Islamic Content Creator
+</p>
+        <p class="welcome">WELCOME TO</p>
+
+        <h1>☪ Sound of Kuran</h1>
+
+        <p>
+            Read, listen and understand
+            the Holy Quran.
+        </p>
+
+        <a href="#quran" class="hero-btn">
+            Start Reading
+        </a>
+
+        <p class="creator">
+            Created by Abdisa Siraj
+        </p>
+
+    </div>
+
+</section>
+
+</section>
             <!--==============Kuran================-->      
-         <section id="quran" class="section">
+         <section id  ="quran" class="section">
           <h2>Kuran Verses</h2>
           <p class="section-text">
     Read, listen and understand the words of Allah.
 </p>
 
 <h3 class="listen-title">🎧 Listen to the Quran</h3>
-         <div class="search-box">
-    <input type="text" id="searchInput" placeholder="🔍 Search Surah...">
+     <div class="search-box">
+
+    <input
+        type="text"
+        id="searchInput"
+        placeholder="🔍 Search Surah or verse..."
+    >
+
     <button id="searchBtn">Search</button>
+
     <button id="resetBtn">Reset</button>
+
 </div>
 
+<p id="searchInfo"></p>
+
+
+
 <!-- <p id="noResult">❌ No Surah found.</p> -->
+ <div class="surah-navigation">
+
+    <button id="prevSurah">⏮ Previous</button>
+
+    <span id="currentSurah">Surah 1</span>
+
+    <button id="nextSurah">Next ⏭</button>
+
+</div>
           <div class="quran-header">
     <h2>📖 Holy Quran</h2>
     <p>Read, listen and understand the words of Allah.</p>
 </div>
-          <div class="quran-card">
-          <h3>Surah Al-Fatiha</h3>     
+<div class="surah-directory">
+
+    <p class="small-title">QURAN DIRECTORY</p>
+
+    <h2>📚 Surah List</h2>
+
+    <p>
+        Choose a Surah to read and listen.
+    </p>
+
+</div>
+<div class="surah-list">
+
+    <button onclick="goToSurah('fatiha')">
+        1. Al-Fatiha
+    </button>
+
+    <button onclick="goToSurah('ikhlas')">
+        112. Al-Ikhlas
+    </button>
+
+    <button onclick="goToSurah('falaq')">
+        113. Al-Falaq
+    </button>
+
+    <button onclick="goToSurah('nas')">
+        114. An-Nas
+    </button>
+
+</div>
+        <div class="quran-card" id="fatiha"
+     data-surah="1"
+     data-name="al-fatiha"
+     data-verses="7">
+          <h3>Surah Al-Fatiha</h3>  
+          <button class="favorite-btn">♡ Favorite</button>   
           <div class="surah-info">
     <span>1</span>
     <span>Al-Fatiha</span>
     <span>7 Verses</span>
 </div>
-         <p class="arabic">
-     بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيم <br>
-    الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ ۝
-    الرَّحْمَٰنِ الرَّحِيمِ ۝
-    مَالِكِ يَوْمِ الدِّينِ ۝
-    إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ ۝
-    اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ ۝
-    صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ
-    غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ ۝
-</p>
-          <audio controls>
-          <source src="fatiha.mp3" type="audio/mpeg">
-          </audio>
+<div class="verse-search">
 
-         <h4>Afaan Oromoo</h4>
+    <input
+        type="number"
+        class="verse-input"
+        placeholder="🔢 Verse number"
+        min="1"
+    >
 
-<p class="translation">
-    Maqaa Rabbii, Ar-Rahmaan, Ar-Rahiim ta'een.
-    Faaruun hundi Rabbii uumamtoota hundaa ti.
-    Ar-Rahmaan, Ar-Rahiim.
-    Abbaa Guyyaa Murtii.
-    Si qofa gabbarra; Si qofa irraa gargaarsa kadhanna.
-    Qajeelcha sirrii nu qajeelchi.
-</p>
+    <button class="verse-search-btn">
+        Search
+    </button>
+
+    <button class="verse-reset-btn">
+        Reset
+    </button>
+<audio controls src="fatiha.mp3"></audio>
+</div>
+
+<div class="verse" data-verse="1">
+
+    <span class="verse-number">1</span>
+
+    <p class="arabic">
+        بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+    </p>
+
+    <p class="translation">
+
+        Maqaa Rabbii Ar-Rahmaan, Ar-Rahiim ta'een.
+    </p>
+        <button class="copy-verse-btn">
+    📋 Copy Verse
+</button>
+<button class="share-verse-btn">
+    📤 Share
+</button> 
+</div>
+
+
+<div class="verse" data-verse="2">
+
+    <span class="verse-number">2</span>
+
+    <p class="arabic">
+        الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ
+    </p>
+
+    <p class="translation">
+
+        Faaruun hundi kan Rabbii Gooftaa aalama hundaa ti.
+    </p>
+        <button class="copy-verse-btn">
+    📋 Copy Verse
+</button>
+        <button class="share-verse-btn">
+    📤 Share
+</button>
+</div>
+
+
+<div class="verse" data-verse="3">
+
+    <span class="verse-number">3</span>
+
+    <p class="arabic">
+        الرَّحْمَٰنِ الرَّحِيمِ
+    </p>
+
+    <p class="translation">
+
+        Ar-Rahmaan, Ar-Rahiim.
+    </p>
+        <button class="copy-verse-btn">
+    📋 Copy Verse
+</button>
+<button class="share-verse-btn">
+    📤 Share
+</button>
+</div>
+
+
+<div class="verse" data-verse="4">
+
+    <span class="verse-number">4</span>
+
+    <p class="arabic">
+        مَالِكِ يَوْمِ الدِّينِ
+    </p>
+
+    <p class="translation">
+
+        Abbaa Guyyaa Murtii.
+    </p>
+        <button class="copy-verse-btn">
+    📋 Copy Verse
+</button>
+<button class="share-verse-btn">
+    📤 Share
+</button>
+</div>
+
+
+<div class="verse" data-verse="5">
+
+    <span class="verse-number">5</span>
+
+    <p class="arabic">
+        إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ
+    </p>
+
+    <p class="translation">
+
+        Si qofa gabbarra; Si qofa irraa gargaarsa kadhanna.
+    </p>
+        <button class="copy-verse-btn">
+    📋 Copy Verse
+</button>
+<button class="share-verse-btn">
+    📤 Share
+</button>
+</div>
+
+
+<div class="verse" data-verse="6">
+
+    <span class="verse-number">6</span>
+
+    <p class="arabic">
+        اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ
+    </p>
+
+    <p class="translation">
+
+        Karaa sirrii nu qajeelchi.
+    </p>
+        <button class="copy-verse-btn">
+    📋 Copy Verse
+</button>
+<button class="share-verse-btn">
+    📤 Share
+</button>
+</div>
+
+
+<div class="verse" data-verse="7">
+
+    <span class="verse-number">7</span>
+
+    <p class="arabic">
+        صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ
+        غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ
+        وَلَا الضَّالِّينَ
+    </p>
+
+    <p class="translation">
+
+        Karaa warra Ati isaan irratti tola oolte;
+        karaa warra dallansuun isaan irra bu'e miti,
+        karaa warra jallataniis miti.
+    </p>
+        <button class="copy-verse-btn">
+    📋 Copy Verse
+</button>
+<button class="share-verse-btn">
+    📤 Share
+</button>
+</div>
         </div>
-         <div class="quran-card">
+        <div class="reading-progress">
+
+    <div class="progress-info">
+        <span>Quran Reading Progress</span>
+        <span id="progressPercent">0%</span>
+    </div>
+
+    <div class="progress-bar">
+        <div id="progressFill"></div>
+    </div>
+
+</div>
+         <div class="quran-card" id="ikhlas"
+     data-surah="112"
+     data-name="al-ikhlas"
+     data-verses="4">
           <h3>Surah Al-Ikhlas</h3>
+          <button class="favorite-btn">♡ Favorite</button>
           <div class="surah-info">
     <span>112</span>
     <span>Al-Ikhlas</span>
     <span>4 Verses</span>
 </div>
-         <p class="arabic">
-             بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيم <br>
-    قُلْ هُوَ اللَّهُ أَحَدٌ ۝
-    اللَّهُ الصَّمَدُ ۝
-    لَمْ يَلِدْ وَلَمْ يُولَدْ ۝
-    وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ ۝
-</p>
-         <audio controls>
-          <source src="ikhlas.mp3" type="audio/mpeg">
-          </audio>
-          
-         <h4>Afaan Oromoo</h4>
-         <p class="translation">
-    Jedhi: “Inni Allaah Tokkicha.”
-    Allaah waan hundi Isa irraa barbaaduudha.
-    Hin dhalle; hin dhalanne.
-    Homtuu Isaaf qixxee hin jiru.
-</p>
+<div class="verse-search">
+
+    <input
+        type="number"
+        class="verse-input"
+        placeholder="🔢 Verse number"
+        min="1"
+    >
+
+    <button class="verse-search-btn">
+        Search
+    </button>
+
+    <button class="verse-reset-btn">
+        Reset
+    </button>
+<audio controls src="ikhlas.mp3"></audio>
+</div>
+
+<div class="verse" data-verse="1">
+<p class="arabic">
+        بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+    </p>
+
+    <p class="translation">
+        Maqaa Rabbii Ar-Rahmaan, Ar-Rahiim ta'een.
+    </p>
+    <span class="verse-number">1</span>
+
+    <p class="arabic">
+        قُلْ هُوَ اللَّهُ أَحَدٌ
+    </p>
+
+    <p class="translation">
+
+        Jedhi: “Inni Allaah Tokkicha.”
+    </p>
+        <button class="copy-verse-btn">
+    📋 Copy Verse
+</button>
+<button class="share-verse-btn">
+    📤 Share
+</button>
+</div>
+
+<div class="verse" data-verse="2">
+
+    <span class="verse-number">2</span>
+
+    <p class="arabic">
+        اللَّهُ الصَّمَدُ
+    </p>
+
+    <p class="translation">
+
+        Allaah waan hundi Isa irraa barbaaduudha.
+    </p>
+        <button class="copy-verse-btn">
+    📋 Copy Verse
+</button>
+<button class="share-verse-btn">
+    📤 Share
+</button>
+</div>
+
+<div class="verse" data-verse="3">
+
+    <span class="verse-number">3</span>
+
+    <p class="arabic">
+        لَمْ يَلِدْ وَلَمْ يُولَدْ
+    </p>
+
+    <p class="translation">
+
+        Hin dhalle; hin dhalanne.
+    </p>
+        <button class="copy-verse-btn">
+    📋 Copy Verse
+</button>
+<button class="share-verse-btn">
+    📤 Share
+</button>
+</div>
+
+<div class="verse" data-verse="4">
+
+    <span class="verse-number">4</span>
+
+    <p class="arabic">
+        وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ
+    </p>
+
+    <p class="translation">
+
+        Homtuu Isaaf qixxee hin jiru.
+    </p>
+        <button class="copy-verse-btn">
+    📋 Copy Verse
+</button>
+<button class="share-verse-btn">
+    📤 Share
+</button>
+</div>
         </div>
-        <div class="quran-card">
+        <div class="reading-progress">
+
+    <div class="progress-info">
+        <span>Quran Reading Progress</span>
+        <span id="progressPercent">0%</span>
+    </div>
+
+    <div class="progress-bar">
+        <div id="progressFill"></div>
+    </div>
+
+</div>
+        <div class="quran-card" id="falaq"
+     data-surah="113"
+     data-name="al-falaq"
+     data-verses="5">
           <h3>Surah Al-Falaq</h3>
+          <button class="favorite-btn">♡ Favorite</button>
           <div class="surah-info">
+
     <span>113</span>
     <span>Al-Falaq</span>
     <span>5 Verses</span>
 </div>
-         <p class="arabic">
-             بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيم <br>
-    قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ ۝
-    مِن شَرِّ مَا خَلَقَ ۝
-    وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ ۝
-    وَمِن شَرِّ النَّفَّاثَاتِ فِي الْعُقَدِ ۝
-    وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ ۝
-</p>
-       <audio controls>
-          <source src="falaq.mp3" type="audio/mpeg">
-          </audio>
-         <h4>Afaan Oromoo</h4>
-         <p class="translation">
-    Jedhi: “Ani Gooftaa barii irraa maganfadha,
-    hammeenya waan Inni uume irraa,
-    hammeenya dukkana yeroo inni seenu irraa,
-    hammeenya warra fuufta hidhaa irratti afuufan irraa,
-    fi hammeenya hasada nama yeroo inni hasadu irraa.”
-</p>
+<div class="verse-search">
+
+    <input
+        type="number"
+        class="verse-input"
+        placeholder="🔢 Verse number"
+        min="1"
+    >
+
+    <button class="verse-search-btn">
+        Search
+    </button>
+
+    <button class="verse-reset-btn">
+        Reset
+    </button>
+<audio controls src="falaq.mp3"></audio>
+</div>
+
+<div class="verse" data-verse="1">
+<p class="arabic">
+        بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+    </p>
+
+    <p class="translation">
+        Maqaa Rabbii Ar-Rahmaan, Ar-Rahiim ta'een.
+    </p>
+    <span class="verse-number">1</span>
+
+    <p class="arabic">
+        قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ
+    </p>
+
+    <p class="translation">
+
+        Jedhi: “Ani Gooftaa barii irraa maganfadha.”
+    </p>
+        <button class="copy-verse-btn">
+    📋 Copy Verse
+</button>
+        <button class="share-verse-btn">
+    📤 Share
+</button>
+</div>
+
+<div class="verse" data-verse="2">
+
+    <span class="verse-number">2</span>
+
+    <p class="arabic">
+        مِن شَرِّ مَا خَلَقَ
+    </p>
+
+    <p class="translation">
+
+        Hammeenya waan Inni uume irraa.
+    </p>
+        <button class="copy-verse-btn">
+    📋 Copy Verse
+</button>
+        <button class="share-verse-btn">
+    📤 Share
+</button>
+</div>
+
+<div class="verse" data-verse="3">
+
+    <span class="verse-number">3</span>
+
+    <p class="arabic">
+        وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ
+    </p>
+
+    <p class="translation">
+
+        Hammeenya dukkana yeroo inni seenu irraa.
+    </p>
+        <button class="copy-verse-btn">
+    📋 Copy Verse
+</button>
+        <button class="share-verse-btn">
+    📤 Share
+</button>
+</div>
+
+<div class="verse" data-verse="4">
+
+    <span class="verse-number">4</span>
+
+    <p class="arabic">
+        وَمِن شَرِّ النَّفَّاثَاتِ فِي الْعُقَدِ
+    </p>
+
+    <p class="translation">
+
+        Hammeenya warra fuufta hidhaa irratti afuufan irraa.
+    </p>
+        <button class="copy-verse-btn">
+    📋 Copy Verse
+</button>
+        <button class="share-verse-btn">
+    📤 Share
+</button>
+</div>
+
+<div class="verse" data-verse="5">
+
+    <span class="verse-number">5</span>
+
+    <p class="arabic">
+        وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ
+    </p>
+
+    <p class="translation">
+       
+        Fi hammeenya hasada nama yeroo inni hasadu irraa.
+    </p>
+     <button class="copy-verse-btn">
+
+    📋 Copy Verse
+</button>
+        <button class="share-verse-btn">
+    📤 Share
+</button>
+</div>
         </div>
-         <div class="quran-card">
+        <div class="reading-progress">
+
+    <div class="progress-info">
+        <span>Quran Reading Progress</span>
+        <span id="progressPercent">0%</span>
+    </div>
+
+    <div class="progress-bar">
+        <div id="progressFill"></div>
+    </div>
+
+</div>
+         <div class="quran-card" id="nas"
+     data-surah="114"
+     data-name="al-nas"
+     data-verses="6">
           <h3>Surah Al-Nas</h3>
+          <button class="favorite-btn">♡ Favorite</button>
           <div class="surah-info">
     <span>114</span>
     <span>An-Nas</span>
     <span>6 Verses</span>
 </div>
-         <p class="arabic">
-             بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيم <br>
-    قُلْ أَعُوذُ بِرَبِّ النَّاسِ ۝
-    مَلِكِ النَّاسِ ۝
-    إِلَٰهِ النَّاسِ ۝
-    مِن شَرِّ الْوَسْوَاسِ الْخَنَّاسِ ۝
-    الَّذِي يُوَسْوِسُ فِي صُدُورِ النَّاسِ ۝
-    مِنَ الْجِنَّةِ وَالنَّاسِ ۝
-</p>
- <audio controls>
-          <source src="nas.mp3" type="audio/mpeg">
-          </audio>
-  
-         <h4>Afaan Oromoo</h4>
-        <p class="translation">
-    Jedhi: “Ani Gooftaa namaa irraa maganfadha,
-    Mootii namaa,
-    Waaqa namaa,
-    hammeenya waswaasa dhokataa irraa,
-    kan qoma namaa keessatti waswaasu,
-    kan jinnii fi nama irraa ta'e.”
-</p>
-        </div>
+<div class="verse-search">
+
+    <input
+        type="number"
+        class="verse-input"
+        placeholder="🔢 Verse number"
+        min="1"
+    >
+
+    <button class="verse-search-btn">
+        Search
+    </button>
+
+    <button class="verse-reset-btn">
+        Reset
+    </button>
+<audio controls src="nas.mp3"></audio>
+</div>
+
+<div class="verse" data-verse="1">
+<p class="arabic">
+        بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+    </p>
+
+    <p class="translation">
+        Maqaa Rabbii Ar-Rahmaan, Ar-Rahiim ta'een.
+    </p>
+    <span class="verse-number">1</span>
+
+    <p class="arabic">
+        قُلْ أَعُوذُ بِرَبِّ النَّاسِ
+    </p>
+
+    <p class="translation">
+
+        Jedhi: “Ani Gooftaa namaa irraa maganfadha.”
+    </p>
+        <button class="copy-verse-btn">
+    📋 Copy Verse
+</button>
+<button class="share-verse-btn">
+    📤 Share
+</button>
+</div>
+
+<div class="verse" data-verse="2">
+
+    <span class="verse-number">2</span>
+
+    <p class="arabic">
+        مَلِكِ النَّاسِ
+    </p>
+
+    <p class="translation">
+
+        Mootii namaa.
+    </p>
+        <button class="copy-verse-btn">
+    📋 Copy Verse
+</button>
+<button class="share-verse-btn">
+    📤 Share
+</button>
+</div>
+
+<div class="verse" data-verse="3">
+
+    <span class="verse-number">3</span>
+
+    <p class="arabic">
+        إِلَٰهِ النَّاسِ
+    </p>
+
+    <p class="translation">
+
+        Waaqa namaa.
+    </p>
+        <button class="copy-verse-btn">
+    📋 Copy Verse
+</button>
+<button class="share-verse-btn">
+    📤 Share
+</button>
+</div>
+
+<div class="verse" data-verse="4">
+
+    <span class="verse-number">4</span>
+
+    <p class="arabic">
+        مِن شَرِّ الْوَسْوَاسِ الْخَنَّاسِ
+    </p>
+
+    <p class="translation">
+
+        Hammeenya waswaasa dhokataa irraa.
+    </p>
+        <button class="copy-verse-btn">
+    📋 Copy Verse
+</button>
+<button class="share-verse-btn">
+    📤 Share
+</button>
+</div>
+
+<div class="verse" data-verse="5">
+
+    <span class="verse-number">5</span>
+
+    <p class="arabic">
+        الَّذِي يُوَسْوِسُ فِي صُدُورِ النَّاسِ
+    </p>
+
+    <p class="translation">
+
+        Kan qoma namaa keessatti waswaasu.
+    </p>
+        <button class="copy-verse-btn">
+    📋 Copy Verse
+</button>
+<button class="share-verse-btn">
+    📤 Share
+</button>
+</div>
+
+<div class="verse" data-verse="6">
+
+    <span class="verse-number">6</span>
+
+    <p class="arabic">
+        مِنَ الْجِنَّةِ وَالنَّاسِ
+    </p>
+
+    <p class="translation">
+
+        Kan jinnii fi nama irraa ta'e.
+    </p>
+        <button class="copy-verse-btn">
+    📋 Copy Verse
+</button>
+<button class="share-verse-btn">
+    📤 Share
+</button>
+</div>  </div>
+<div class="reading-progress">
+
+    <div class="progress-info">
+        <span>Quran Reading Progress</span>
+        <span id="progressPercent">0%</span>
+    </div>
+
+    <div class="progress-bar">
+        <div id="progressFill"></div>
+    </div>
+
+</div>
          </section>  
   
             <!--==============About================-->  
        <section id="about" class="section about">
-          <h2>About Us</h2>
-       <p> Sound of Kuran is Islamic website created to share Kuran recitation,
-        Kuran verses and Islamic Knowledge.
-       </p>
-         
-      <h3>Abdisa Siraj</h3>
-      <h3>عبدعيسى سراج</h3>
-<p>Islamic content creater</p>
-       </section>   
-      <!--==============Contact================-->     
-      <section id="contact" class="section">
-        <h2>Contact Us</h2>
-       <div class="contact-box">
-        <p><strong>Name:</strong>Abdisa Siraj</p>
-        <p><strong>Email:</strong>abdisasaba2@gmail.com</p>
-         <p><strong>Website:</strong>Sound Of Kuran</p>
-       </div>
-      </section>    
-      <!--==============Contact================-->     
+
+    <div class="about-content">
+
+        <p class="small-title">ABOUT US</p>
+
+        <h2>About Sound of Kuran</h2>
+
+        <p>
+            Sound of Kuran is an Islamic website created
+            to help people read, listen and understand
+            the Holy Quran.
+        </p>
+
+        <p>
+            Our goal is to make Quranic content
+            simple and accessible for everyone.
+        </p>
+
+        <h3>Abdisa Siraj</h3>
+   <h3>عبدعيسى سراج</h3>   
+        <p class="creator-role">
+            Islamic Content Creator
+        </p>
+   
+    </div>
+
+</section>
+      <!--==============Contact================--> 
+     
+   <section id="contact" class="section">
+
+    <p class="small-title">CONTACT</p>
+
+    <h2>Get In Touch</h2>
+
+    <p class="section-text">
+        Have a question or suggestion?
+        You can contact us.
+    </p>
+
+    <div class="contact-box">
+
+        <div class="contact-item">
+            <span>👤</span>
+            <div>
+                <strong>Name</strong>
+                <p>Abdisa Siraj</p>
+            </div>
+        </div>
+
+        <div class="contact-item">
+            <span>📧</span>
+            <div>
+                <strong>Email</strong>
+                <p>abdisasaba2@gmail.com</p>
+            </div>
+        </div>
+
+        <div class="contact-item">
+            <span>▶️</span>
+            <div>
+                <strong>YouTube</strong>
+            <p><a href="https://www.youtube.com/@Kuran_sound">myYoutube</a></p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+      
+      <!--==============Footer================-->     
       <footer>
-        <h3>🕋🕌 Sound Of Kuran</h3>
-        <p>☪ 2026 Sound Of Kuran | Abdisa Siraj</p>
-      </footer>
+    <h3>☪ Sound of Kuran</h3>
+
+    <p>
+        Read • Listen • Understand
+    </p>
+
+    <p>
+        Created by Abdisa Siraj
+    </p>
+
+    <p>
+        © 2026 All Rights Reserved
+    </p>
+</footer>
       <script src="bds.js"></script>
 </body>
 </html>
