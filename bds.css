@@ -902,3 +902,34 @@ footer p {
 .dark-mode .share-verse-btn {
     color: #d4af37;
 }
+/* Mobile Menu */
+#menuBtn {
+    display: none;
+}
+
+@media (max-width: 700px) {
+
+    #menuBtn {
+        display: block;
+        background: none;
+        border: none;
+        color: #d4af37;
+        font-size: 28px;
+        cursor: pointer;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        gap: 15px;
+        background-color: #071f1a;
+        padding: 15px;
+        border-radius: 8px;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+}
