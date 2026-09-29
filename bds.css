@@ -722,7 +722,9 @@ footer p {
         display: block;
         padding: 8px;
     }
-
+.nav-links.active{
+    display:flex;
+}
 }
 /* ===== SURAH NAVIGATION ===== */
 
