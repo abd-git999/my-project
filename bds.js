@@ -1060,3 +1060,20 @@ window.addEventListener("load", function() {
     }, 3000);
 
 });
+// ===== REGISTER SERVICE WORKER =====
+
+if ("serviceWorker" in navigator) {
+
+    window.addEventListener("load", function() {
+
+        navigator.serviceWorker.register("./sw.js")
+            .then(function() {
+                console.log("✅ Service worker registered");
+            })
+            .catch(function(error) {
+                console.log("❌ Service worker registration failed:", error);
+            });
+
+    });
+
+}
