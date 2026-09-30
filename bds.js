@@ -118,21 +118,46 @@ searchBtn.addEventListener("click", function() {
 
 });
 
-// ===== RESET SEARCH =====
+// ===== VERSE RESET =====
 
-resetBtn.addEventListener("click", function() {
+document.addEventListener("click", function(event) {
 
-    searchInput.value = "";
+    if (!event.target.classList.contains("verse-reset-btn")) {
+        return;
+    }
 
-    surahCards.forEach(function(card) {
-        card.style.display = "block";
+    const button = event.target;
+
+    const card =
+        button.closest(".quran-card");
+
+    const input =
+        card.querySelector(".verse-input");
+
+    const message =
+        card.querySelector(".verse-message");
+
+    const verses =
+        card.querySelectorAll(".verse");
+
+
+    // Clear input
+    input.value = "";
+
+    // Clear message
+    message.textContent = "";
+
+
+    // Show all verses again
+    verses.forEach(function(verse) {
+
+        verse.style.display = "block";
+
+        verse.classList.remove(
+            "verse-found"
+        );
+
     });
-
-    document.getElementById("noResult").style.display = "none";
-
-    currentIndex = 0;
-
-    currentSurah.textContent = "Surah 1";
 
 });
 // ===== MOBILE MENU =====
@@ -212,53 +237,41 @@ prevSurah.addEventListener("click", function() {
     }
 
 });
-// ===== FAVORITES =====
+// ===== FAVORITE SURAH =====
 
-const favoriteButtons =
-    document.querySelectorAll(".favorite-btn");
+document.addEventListener("click", function(event) {
 
-
-favoriteButtons.forEach(function(button, index) {
-
-    const savedFavorite =
-        localStorage.getItem("favorite-" + index);
-
-    if (savedFavorite === "true") {
-
-        button.classList.add("favorite");
-
-        button.textContent = "♥ Favorite";
-
+    if (!event.target.classList.contains("favorite-btn")) {
+        return;
     }
 
+    const button = event.target;
+    const card = button.closest(".quran-card");
 
-    button.addEventListener("click", function() {
+    const surahNumber = card.dataset.surah;
 
-        if (button.classList.contains("favorite")) {
+    let favorites =
+        JSON.parse(localStorage.getItem("favoriteSurahs")) || [];
 
-            button.classList.remove("favorite");
+    if (favorites.includes(surahNumber)) {
 
-            button.textContent = "♡ Favorite";
+        favorites = favorites.filter(function(number) {
+            return number !== surahNumber;
+        });
 
-            localStorage.setItem(
-                "favorite-" + index,
-                "false"
-            );
+        button.textContent = "♡ Favorite";
 
-        } else {
+    } else {
 
-            button.classList.add("favorite");
+        favorites.push(surahNumber);
 
-            button.textContent = "♥ Favorite";
+        button.textContent = "⭐ Favorite";
+    }
 
-            localStorage.setItem(
-                "favorite-" + index,
-                "true"
-            );
-
-        }
-
-    });
+    localStorage.setItem(
+        "favoriteSurahs",
+        JSON.stringify(favorites)
+    );
 
 });
 // ===== SURAH DIRECTORY =====
@@ -283,179 +296,182 @@ function goToSurah(surahId) {
 } 
 // ===== VERSE SEARCH =====
 
-const verseSearchButtons =
-    document.querySelectorAll(".verse-search-btn");
+document.addEventListener("click", function(event) {
 
-verseSearchButtons.forEach(function(button) {
+    if (!event.target.classList.contains("verse-search-btn")) {
+        return;
+    }
 
-    button.addEventListener("click", function() {
+    const button = event.target;
 
-        const card = button.closest(".quran-card");
+    const card =
+        button.closest(".quran-card");
 
-        const input =
-            card.querySelector(".verse-input");
+    const input =
+        card.querySelector(".verse-input");
 
-        const message =
-            card.querySelector(".verse-message");
+    const message =
+        card.querySelector(".verse-message");
 
-        const verses =
-            card.querySelectorAll(".verse");
+    const verses =
+        card.querySelectorAll(".verse");
 
-        const number =
-            input.value.trim();
+    const number =
+        input.value.trim();
 
-        if (number === "") {
 
-            message.textContent =
-                "⚠️ Enter a verse number.";
+    if (number === "") {
 
-            return;
-        }
+        message.textContent =
+            "⚠️ Enter a verse number.";
 
-        let found = false;
+        return;
+    }
 
-        verses.forEach(function(verse) {
 
-            const verseNumber =
-                verse.dataset.verse;
+    let found = false;
 
-            if (verseNumber === number) {
 
-                verse.style.display = "block";
-                verse.classList.add("verse-found")
+    verses.forEach(function(verse) {
 
-                verse.scrollIntoView({
-                    behavior: "smooth",
-                    block: "center"
-                });
+        const verseNumber =
+            verse.dataset.verse;
 
-                found = true;
 
-            } else {
+        if (verseNumber === number) {
 
-                verse.style.display = "none";
-               verse.classList.remove("verse-found");
-            }
+            verse.style.display =
+                "block";
 
-        });
+            verse.classList.add(
+                "verse-found"
+            );
 
-        if (found) {
+            verse.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
 
-            message.textContent =
-                "✅ Verse " + number + " found.";
+            found = true;
 
         } else {
 
-            message.textContent =
-                "❌ Verse " + number + " not found.";
+            verse.style.display =
+                "none";
+
+            verse.classList.remove(
+                "verse-found"
+            );
 
         }
 
     });
 
-});
-const verseResetButtons =
-    document.querySelectorAll(".verse-reset-btn");
 
-verseResetButtons.forEach(function(button) {
+    if (found) {
 
-    button.addEventListener("click", function() {
+        message.textContent =
+            "✅ Verse " + number + " found.";
 
-        const card =
-            button.closest(".quran-card");
+    } else {
 
-        const input =
-            card.querySelector(".verse-input");
+        message.textContent =
+            "❌ Verse " + number + " not found.";
 
-        const message =
-            card.querySelector(".verse-message");
-
-        const verses =
-            card.querySelectorAll(".verse");
-
-        input.value = "";
-
-        message.textContent = "";
-
-        verses.forEach(function(verse) {
-
-            verse.style.display = "block";
-            verse.classList.remove("verse-found");
-
-        });
-
-    });
+    }
 
 });
 // ===== SHARE + COPY VERSE =====
 
-document.querySelectorAll(".copy-verse-btn").forEach(function(button) {
+// ===== COPY VERSE =====
 
-    button.addEventListener("click", function() {
+document.addEventListener("click", function(event) {
 
-        const verse = button.closest(".verse");
+    if (!event.target.classList.contains("copy-verse-btn")) {
+        return;
+    }
 
-        const arabic =
-            verse.querySelector(".arabic").textContent.trim();
+    const button = event.target;
 
-        const translation =
-            verse.querySelector(".translation").textContent.trim();
+    const verse =
+        button.closest(".verse");
 
-        const text =
-            arabic + "\n\n" + translation;
+    const arabic =
+        verse.querySelector(".arabic").textContent.trim();
 
-        navigator.clipboard.writeText(text).then(function() {
+    const translation =
+        verse.querySelector(".translation").textContent.trim();
 
-            button.textContent = "✅ Copied!";
+    const text =
+        arabic + "\n\n" + translation;
+
+
+    navigator.clipboard.writeText(text)
+        .then(function() {
+
+            button.textContent =
+                "✅ Copied!";
 
             setTimeout(function() {
-                button.textContent = "📋 Copy Verse";
+
+                button.textContent =
+                    "📋 Copy Verse";
+
             }, 1500);
 
         });
 
-    });
-
 });
 
 
-document.querySelectorAll(".share-verse-btn").forEach(function(button) {
+// ===== SHARE VERSE =====
 
-    button.addEventListener("click", function() {
+document.addEventListener("click", function(event) {
 
-        const verse = button.closest(".verse");
+    if (!event.target.classList.contains("share-verse-btn")) {
+        return;
+    }
 
-        const arabic =
-            verse.querySelector(".arabic").textContent.trim();
+    const button = event.target;
 
-        const translation =
-            verse.querySelector(".translation").textContent.trim();
+    const verse =
+        button.closest(".verse");
 
-        const text =
-            arabic + "\n\n" + translation;
+    const arabic =
+        verse.querySelector(".arabic").textContent.trim();
 
-        if (navigator.share) {
+    const translation =
+        verse.querySelector(".translation").textContent.trim();
 
-            navigator.share({
-                title: "Sound of Kuran",
-                text: text
-            });
+    const text =
+        arabic + "\n\n" + translation;
 
-        } else {
 
-            navigator.clipboard.writeText(text).then(function() {
+    if (navigator.share) {
 
-                button.textContent = "✅ Copied!";
+        navigator.share({
+            title: "Sound of Kuran",
+            text: text
+        });
+
+    } else {
+
+        navigator.clipboard.writeText(text)
+            .then(function() {
+
+                button.textContent =
+                    "✅ Copied!";
 
                 setTimeout(function() {
-                    button.textContent = "📤 Share";
+
+                    button.textContent =
+                        "📤 Share";
+
                 }, 1500);
 
             });
 
-        }
-
-    });
+    }
 
 });
 // ===== READING PROGRESS =====
@@ -487,3 +503,320 @@ window.addEventListener("scroll", function() {
         finalProgress + "%";
 
 });
+// ===== DYNAMIC SURAH DIRECTORY =====
+
+const surahList =
+    document.getElementById("surah-list");
+
+if (surahList) {
+
+    quranData.forEach(function(surah) {
+
+        const button =
+            document.createElement("button");
+
+        button.textContent =
+            surah.number + ". " + surah.name;
+
+        button.addEventListener("click", function() {
+
+            goToSurah(surah.number);
+
+        });
+
+        surahList.appendChild(button);
+
+    });
+
+}
+
+
+// ===== GO TO SURAH =====
+
+function goToSurah(surahNumber) {
+
+    const surah =
+        document.querySelector(
+            '.quran-card[data-surah="' +
+            surahNumber +
+            '"]'
+        );
+
+    if (!surah) {
+
+        alert(
+            "⏳ This Surah is still loading. Please wait a moment."
+        );
+
+        return;
+    }
+
+    surah.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+
+    surah.classList.add("selected-surah");
+
+    setTimeout(function() {
+
+        surah.classList.remove(
+            "selected-surah"
+        );
+
+    }, 1500);
+
+}
+// ===== DYNAMIC QURAN =====
+
+const dynamicQuran =
+    document.getElementById("dynamic-quran");
+
+async function loadAllSurahs() {
+
+    if (!dynamicQuran) {
+        return;
+    }
+
+    dynamicQuran.innerHTML = `
+        <p class="verse-message">
+            ⏳ Loading Quran...
+        </p>
+    `;
+
+    try {
+
+        dynamicQuran.innerHTML = "";
+
+        for (const surah of quranData) {
+
+            await loadSurah(surah);
+
+        }
+
+    } catch (error) {
+
+        console.error(error);
+
+        dynamicQuran.innerHTML = `
+            <p class="verse-message">
+                ❌ Quran could not be loaded.
+                Please check your internet connection.
+            </p>
+       ` ;
+
+    }
+
+}
+
+
+// ===== LOAD ONE SURAH =====
+
+async function loadSurah(surah) {
+
+    const arabicURL =
+        `https://api.alquran.cloud/v1/surah/${surah.number}/quran-uthmani`;
+
+    const oromoURL =
+        `https://quranenc.com/api/v1/translation/sura/oromo_ababor/${surah.number}`;
+
+    const [arabicResponse, oromoResponse] =
+        await Promise.all([
+            fetch(arabicURL),
+            fetch(oromoURL)
+        ]);
+
+    if (!arabicResponse.ok ||
+        !oromoResponse.ok) {
+
+        throw new Error(
+            "Failed to load Surah " + surah.number
+        );
+
+    }
+
+    const arabicData =
+        await arabicResponse.json();
+
+    const oromoData =
+        await oromoResponse.json();
+     console.log("OROMO DATA:", oromoData);
+
+    const arabicVerses =
+        arabicData.data.ayahs;
+
+    const oromoVerses =
+        oromoData.result;
+
+
+    const card =
+        document.createElement("div");
+
+    card.className = "quran-card";
+
+    card.id =
+        "surah-" + surah.number;
+
+    card.dataset.surah =
+        surah.number;
+
+    card.dataset.name =
+        surah.name.toLowerCase();
+
+    card.dataset.verses =
+        arabicVerses.length;
+
+
+    let versesHTML = "";
+
+
+    arabicVerses.forEach(function(ayah, index) {
+
+        const oromo =
+            oromoVerses[index];
+
+        const translation =
+            oromo ? oromo.translation : "";
+
+
+        versesHTML += `
+
+            <div class="verse"
+                 data-verse="${ayah.numberInSurah}">
+
+                <span class="verse-number">
+                    ${ayah.numberInSurah}
+                </span>
+
+                <p class="arabic">
+                    ${ayah.text}
+                </p>
+
+                <p class="translation">
+                    ${translation}
+                </p>
+
+                <div class="verse-actions">
+
+                    <button class="copy-verse-btn">
+                        📋 Copy Verse
+                    </button>
+
+                    <button class="share-verse-btn">
+                        📤 Share
+                    </button>
+
+                </div>
+
+            </div>
+
+       ` ;
+
+    });
+
+
+    card.innerHTML = `
+
+        <h3>
+            Surah ${surah.name}
+        </h3>
+
+
+        <div class="surah-info">
+
+            <span>
+                ${surah.number}
+            </span>
+
+            <span>
+                ${surah.name}
+            </span>
+
+            <span>
+                ${arabicVerses.length} Verses
+            </span>
+
+        </div>
+
+
+        <p class="surah-instruction">
+            Search for a verse number below.
+        </p>
+
+
+        <div class="verse-search">
+
+            <input
+                type="number"
+                class="verse-input"
+                placeholder="🔢 Verse number"
+                min="1"
+            >
+
+            <button class="verse-search-btn">
+                Search
+            </button>
+
+            <button class="verse-reset-btn">
+                Reset
+            </button>
+
+        </div>
+
+
+        <p class="verse-message"></p>
+
+
+        <audio controls>
+            <source
+                src="https://cdn.islamic.network/quran/audio-surah/128/ar.alafasy/${surah.number}.mp3"
+                type="audio/mpeg"
+            >
+        </audio>
+
+
+        ${versesHTML}
+
+    `;
+
+
+    dynamicQuran.appendChild(card);
+loadFavorites();
+}
+
+
+// ===== START LOADING =====
+
+loadAllSurahs();
+// ===== LOAD FAVORITES =====
+
+function loadFavorites() {
+
+    const favorites =
+        JSON.parse(localStorage.getItem("favoriteSurahs")) || [];
+
+    document.querySelectorAll(".quran-card").forEach(function(card) {
+
+        const surahNumber = card.dataset.surah;
+
+        const button =
+            card.querySelector(".favorite-btn");
+
+        if (!button) {
+            return;
+        }
+
+        if (favorites.includes(surahNumber)) {
+
+            button.textContent = "⭐ Favorite";
+
+        } else {
+
+            button.textContent = "♡ Favorite";
+
+        }
+
+    });
+
+}
+loadFavorites();

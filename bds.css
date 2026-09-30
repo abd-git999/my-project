@@ -784,48 +784,29 @@ footer p {
 .dark-mode .favorite-btn {
     color: #d4af37;
 }
-/* ===== SURAH LIST ===== */
-
-.surah-directory {
-    text-align: center;
-    margin: 40px auto 25px;
-}
-
-.surah-directory h2 {
-    color: #071f1a;
-    margin: 10px 0;
-}
-
-.surah-directory p:not(.small-title) {
-    color: #666;
-}
-
 .surah-list {
-    max-width: 700px;
-    margin: 20px auto 40px;
-
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
+    gap: 10px;
+    max-width: 900px;
+    margin: 25px auto;
 }
 
 .surah-list button {
-    padding: 14px;
-
+    padding: 12px;
     border: 1px solid #d4af37;
     border-radius: 8px;
-
-    background-color: white;
+    background: white;
     color: #071f1a;
-
     font-weight: bold;
     cursor: pointer;
-
     transition: 0.3s;
 }
 
 .surah-list button:hover {
-    background-color: #d4af37;
+    background: #d4af37;
+    color: white;
+    transform: translateY(-2px);
 }
 
 .dark-mode .surah-directory h2 {
@@ -917,7 +898,10 @@ footer p {
         font-size: 28px;
         cursor: pointer;
     }
-
+.surah-list {
+    grid-template-columns: 1fr;
+    width: 95%;
+}
     .nav-links {
         display: none;
         flex-direction: column;

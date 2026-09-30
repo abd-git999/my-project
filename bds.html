@@ -107,66 +107,8 @@
     </p>
 
 </div>
-<div class="surah-list">
+<div class="surah-list" id="surah-list"></div>
 
-    <button onclick="goToSurah('fatiha')">
-        1. Al-Fatiha
-    </button>
-
-    <button onclick="goToSurah('ikhlas')">
-        114. Al-Ikhlas
-    </button>
-
-    <button onclick="goToSurah('falaq')">
-        113. Al-Falaq
-    </button>
-
-    <button onclick="goToSurah('nas')">
-        112. An-Nas
-    </button>
-    <button onclick="goToSurah('masad')">
-    111. Al-Masad
-</button>
-<button onclick="goToSurah('nasr')">
-    110. Al-Nasr
-</button>
-<button onclick="goToSurah('kafirun')">
-    109. Al-Kafirun
-</button>
-<button onclick="goToSurah('kawthar')">
-    108. Al-Kawthar
-</button>
-<button onclick="goToSurah('maun')">
-    107. Al-Ma'un
-</button>
-<button onclick="goToSurah('quraish')">
-    106. Quraysh
-</button>
-
-<button onclick="goToSurah('fil')">
-    105. Al-Fil
-</button>
-
-<button onclick="goToSurah('humazah')">
-    104. Al-Humazah
-</button>
-
-<button onclick="goToSurah('asr')">
-    103. Al-Asr
-</button>
-
-<button onclick="goToSurah('takathur')">
-    102. At-Takathur
-</button>
-
-<button onclick="goToSurah('qariah')">
-    101. Al-Qari'ah
-</button>
-
-<button onclick="goToSurah('adiyat')">
-    100. Al-'Adiyat
-</button>
-</div>
         <div class="quran-card" id="fatiha"
      data-surah="1"
      data-name="al-fatiha"
@@ -1829,7 +1771,7 @@
     </div>
 
 </section>
-      
+      <div id="dynamic-quran"></div>
       <!--==============Footer================-->     
       <footer>
     <h3>☪ Sound of Kuran</h3>
@@ -1846,6 +1788,8 @@
         © 2026 All Rights Reserved
     </p>
 </footer>
+
+    <script src="quran-data.js"></script>
       <script src="bds.js"></script>
 </body>
 </html>
