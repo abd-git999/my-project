@@ -19,6 +19,10 @@ searchBtn.addEventListener("click", function() {
     const searchText = searchInput.value
         .toLowerCase()
         .trim();
+        if(searchText===""){
+            alert("please enter a surah name or number or verse.");
+            return;
+        }
 
     const quranCards =
         document.querySelectorAll(".quran-card");
@@ -118,6 +122,15 @@ searchBtn.addEventListener("click", function() {
 
 });
 
+// ===== SEARCH WITH ENTER =====
+
+searchInput.addEventListener("keydown", function(event) {
+
+    if (event.key === "Enter") {
+        searchBtn.click();
+    }
+
+});
 // ===== VERSE RESET =====
 
 document.addEventListener("click", function(event) {
@@ -272,7 +285,7 @@ document.addEventListener("click", function(event) {
         "favoriteSurahs",
         JSON.stringify(favorites)
     );
-
+updateFavoriteCount();
 });
 // ===== SURAH DIRECTORY =====
 
@@ -696,17 +709,25 @@ async function loadSurah(surah) {
                     ${translation}
                 </p>
 
-                <div class="verse-actions">
+              <div class="verse-actions">
 
-                    <button class="copy-verse-btn">
-                        📋 Copy Verse
-                    </button>
+    <button class="copy-verse-btn">
+        📋 Copy Verse
+    </button>
 
-                    <button class="share-verse-btn">
-                        📤 Share
-                    </button>
+    <button class="share-verse-btn">
+        📤 Share
+    </button>
 
-                </div>
+    <button class="previous-verse-btn">
+        ⬅️ Previous
+    </button>
+
+    <button class="next-verse-btn">
+        Next ➡️
+    </button>
+
+</div>
 
             </div>
 
@@ -820,3 +841,222 @@ function loadFavorites() {
 
 }
 loadFavorites();
+// ===== SHOW FAVORITES =====
+
+document.addEventListener("click", function(event) {
+
+    if (event.target.id !== "showFavoritesBtn") {
+        return;
+    }
+
+    const favorites =
+        JSON.parse(localStorage.getItem("favoriteSurahs")) || [];
+
+    const cards =
+        document.querySelectorAll(".quran-card");
+
+    if (favorites.length === 0) {
+
+        alert("⭐ You have no favorite Surahs yet.");
+
+        return;
+    }
+
+    cards.forEach(function(card) {
+
+        const surahNumber =
+            card.dataset.surah;
+
+        if (favorites.includes(surahNumber)) {
+
+            card.style.display = "block";
+
+        } else {
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+});
+// ===== SHOW ALL SURAHS =====
+
+document.addEventListener("click", function(event) {
+
+    if (event.target.id !== "showAllSurahsBtn") {
+        return;
+    }
+
+    document.querySelectorAll(".quran-card").forEach(function(card) {
+
+        card.style.display = "block";
+
+    });
+
+});
+// ===== UPDATE FAVORITE COUNT =====
+
+function updateFavoriteCount() {
+
+    const favorites =
+        JSON.parse(localStorage.getItem("favoriteSurahs")) || [];
+
+    const button =
+        document.getElementById("showFavoritesBtn");
+
+    if (!button) {
+        return;
+    }
+
+    button.textContent =
+        "⭐ My Favorites (" + favorites.length + ")";
+}
+
+updateFavoriteCount();
+// ===== NEXT / PREVIOUS VERSE =====
+
+document.addEventListener("click", function(event) {
+
+    if (
+        !event.target.classList.contains("next-verse-btn") &&
+        !event.target.classList.contains("previous-verse-btn")
+    ) {
+        return;
+    }
+
+    const button = event.target;
+
+    const currentVerse =
+        button.closest(".verse");
+
+    const card =
+        button.closest(".quran-card");
+
+    const verses =
+        Array.from(card.querySelectorAll(".verse"));
+
+    const currentIndex =
+        verses.indexOf(currentVerse);
+
+    let targetIndex;
+
+    if (button.classList.contains("next-verse-btn")) {
+
+        targetIndex = currentIndex + 1;
+
+    } else {
+
+        targetIndex = currentIndex - 1;
+
+    }
+
+    if (
+        targetIndex < 0 ||
+        targetIndex >= verses.length
+    ) {
+        return;
+    }
+
+    verses.forEach(function(verse) {
+        verse.style.display = "none";
+    });
+
+    const targetVerse =
+        verses[targetIndex];
+
+    targetVerse.style.display = "block";
+
+    targetVerse.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+
+});
+// ===== AUDIO ERROR =====
+
+document.addEventListener("error", function(event) {
+
+    if (event.target.tagName !== "AUDIO") {
+        return;
+    }
+
+    const audio = event.target;
+    const card = audio.closest(".quran-card");
+
+    if (!card) {
+        return;
+    }
+
+    let message = card.querySelector(".audio-message");
+
+    if (!message) {
+
+        message = document.createElement("p");
+
+        message.className = "audio-message";
+
+        audio.insertAdjacentElement(
+            "afterend",
+            message
+        );
+    }
+
+    message.textContent =
+        "❌ Audio could not be loaded. Please check your internet connection.";
+
+}, true);
+// ===== REMEMBER LAST SURAH =====
+
+document.addEventListener("click", function(event) {
+
+    const card = event.target.closest(".quran-card");
+
+    if (!card) {
+        return;
+    }
+
+    const surahNumber = card.dataset.surah;
+
+    if (surahNumber) {
+
+        localStorage.setItem(
+            "lastSurah",
+            surahNumber
+        );
+
+    }
+
+});
+// ===== SHOW LAST SURAH =====
+
+window.addEventListener("load", function() {
+
+    const lastSurah =
+        localStorage.getItem("lastSurah");
+
+    if (!lastSurah) {
+        return;
+    }
+
+    setTimeout(function() {
+
+        const card =
+            document.querySelector(
+                '.quran-card[data-surah="' +
+                lastSurah +
+                '"]'
+            );
+
+        if (!card) {
+            return;
+        }
+
+        card.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+    }, 3000);
+
+});

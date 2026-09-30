@@ -917,3 +917,109 @@ footer p {
         display: flex;
     }
 }
+/* ===== FAVORITES BUTTON ===== */
+
+#showFavoritesBtn {
+    display: block;
+    margin: 20px auto;
+    padding: 12px 22px;
+    border: 1px solid #d4af37;
+    border-radius: 8px;
+    background: #071f1a;
+    color: #d4af37;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#showFavoritesBtn:hover {
+    background: #d4af37;
+    color: #071f1a;
+    transform: translateY(-2px);
+}
+#showAllSurahsBtn {
+    display: block;
+    margin: 10px auto 20px;
+    padding: 12px 22px;
+    border: 1px solid #071f1a;
+    border-radius: 8px;
+    background: white;
+    color: #071f1a;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#showAllSurahsBtn:hover {
+    background: #071f1a;
+    color: white;
+}
+.previous-verse-btn,
+.next-verse-btn {
+    padding: 8px 12px;
+    border: 1px solid #d4af37;
+    border-radius: 6px;
+    background: white;
+    color: #071f1a;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.previous-verse-btn:hover,
+.next-verse-btn:hover {
+    background: #d4af37;
+    color: white;
+}
+.audio-message {
+    text-align: center;
+    color: #b00020;
+    font-size: 14px;
+    margin: 8px 0 15px;
+}
+/* ===== MOBILE IMPROVEMENT ===== */
+
+@media (max-width: 700px) {
+
+    .verse-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+    }
+
+    .verse-actions button {
+        flex: 1 1 auto;
+        min-width: 110px;
+    }
+
+    .verse-search {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+    }
+
+    .verse-input {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .verse-search-btn,
+    .verse-reset-btn {
+        flex: 1;
+    }
+
+    .quran-card audio {
+        width: 100%;
+    }
+
+    .arabic {
+        font-size: 24px;
+        line-height: 2;
+    }
+
+    .translation {
+        font-size: 15px;
+        line-height: 1.7;
+    }
+}
